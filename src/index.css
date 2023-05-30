@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  top: 0.5rem;
+}
+
+
+
+@media screen and (max-width: 639px) {
+  #navbar {
+    display: none;
+  }
+
+  #logo {
+    display: none;
+  } 
+}
