@@ -1,19 +1,41 @@
-const Modal = (setIsOpenedModal) => {
+import React, { useState } from "react";
+
+const FormModal = ({ setIsOpenedModal, books, setBooks }) => {
+  const [cover, setCover] = useState();
+  const [title, setTitle] = useState();
+  const [author, setAuthor] = useState();
+  const [genre, setGenre] = useState();
+  const [rate, setRate] = useState();
+  const [status, setStatus] = useState();
+
   const inputDiv = "flex items-center";
   return (
     <>
       <div className="z-10 bg-slate-500 w-full h-full fixed overflow-auto text-center bg-opacity-40 flex justify-center items-center">
-        <form className="flex flex-col bg-white w-[70%] z-20 justify-around rounded-xl h-[70%]">
+        <form className="flex flex-col bg-white w-[70%] z-20 justify-around rounded-xl min-h-fit overflow-auto">
           <button
             className="self-end mr-2 mt-2 border-2 p-1 hover:bg-slate-300 hover:cursor-pointer"
             onClick={() => setIsOpenedModal(false)}
           >
             X
           </button>
+          <img src={cover} alt="cover" className="w-1/2 self-center" />
+          <input
+            type="file"
+            className="m-1 rounded-md hover:outline"
+            accept="image/*"
+            onChange={(e) => {
+              console.log(e.target.files);
+              setCover(URL.createObjectURL(e.target.files[0]));
+            }}
+          />
           <input
             type="text"
             placeholder="Untitled"
             className="text-5xl m-1 rounded-md hover:outline"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
           />
           <div className={inputDiv}>
             <label htmlFor="author" className="w-20 text-left pl-2">
@@ -24,6 +46,9 @@ const Modal = (setIsOpenedModal) => {
               type="text"
               placeholder="Author"
               className="border-2 border-gray-300 p-2 m-2 rounded-md grow"
+              onChange={(e) => {
+                setAuthor(e.target.value);
+              }}
             />
           </div>
           <div className={inputDiv}>
@@ -35,6 +60,9 @@ const Modal = (setIsOpenedModal) => {
               type="text"
               placeholder="Genre"
               className="border-2 border-gray-300 p-2 m-2 rounded-md grow"
+              onChange={(e) => {
+                setGenre(e.target.value);
+              }}
             />
           </div>
           <div className={inputDiv}>
@@ -46,6 +74,9 @@ const Modal = (setIsOpenedModal) => {
               id="rate"
               placeholder="Rate"
               className="border-2 border-gray-300 p-2 m-2 rounded-md grow"
+              onChange={(e) => {
+                setRate(e.target.value);
+              }}
             />
           </div>
           <div className={inputDiv}>
@@ -57,22 +88,27 @@ const Modal = (setIsOpenedModal) => {
               id="state"
               placeholder="Status"
               className="border-2 border-gray-300 p-2 m-2 rounded-md grow"
-            />
-          </div>
-          <div className={inputDiv}>
-            <label htmlFor="image" className="w-20 text-left pl-2">
-              Image URL
-            </label>
-            <input
-              id="image"
-              type="text"
-              placeholder="Image URL"
-              className="border-2 border-gray-300 p-2 m-2 rounded-md grow"
+              onChange={(e) => {
+                setStatus(e.target.value);
+              }}
             />
           </div>
           <button
             type="submit"
             className="bg-blue-500 rounded-xl p-2 m-2 text-white font-semibold"
+            onClick={(e) => {
+              setBooks([
+                ...books,
+                {
+                  cover: cover,
+                  title: title,
+                  author: author,
+                  genre: genre,
+                  rate: rate,
+                  status: status,
+                },
+              ]);
+            }}
           >
             Add
           </button>
@@ -82,4 +118,4 @@ const Modal = (setIsOpenedModal) => {
   );
 };
 
-export default Modal;
+export default FormModal;

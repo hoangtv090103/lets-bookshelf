@@ -2,21 +2,22 @@ import "./App.css";
 import PageHeader from "./components/PageHeader";
 import PageLayout from "./layout/PageLayout";
 import React, { useState } from "react";
-import Modal from "./components/Modal";
+import FormModal from "./components/FormModal";
 function App() {
   const [books, setBooks] = useState([]);
   const [isOpenedModal, setIsOpenedModal] = useState(false);
 
   return (
     <div className="App">
-      {isOpenedModal && <Modal setIsOpenedModal={setIsOpenedModal} />}
+      {isOpenedModal && (
+        <FormModal
+          setIsOpenedModal={setIsOpenedModal}
+          books={books}
+          setBooks={setBooks}
+        />
+      )}
       <PageHeader />
-      <PageLayout
-        books={books}
-        setBooks={setBooks}
-        isOpenedModal={isOpenedModal}
-        setIsOpenedModal={setIsOpenedModal}
-      />
+      <PageLayout books={books} setIsOpenedModal={setIsOpenedModal} />
     </div>
   );
 }

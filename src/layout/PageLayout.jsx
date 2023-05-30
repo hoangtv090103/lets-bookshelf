@@ -1,12 +1,8 @@
 import React from "react";
 import SideWrapper from "../components/SideWrapper";
 import BookShelves from "../components/BookShelves";
-import Modal from "../components/Modal";
 
-const PageLayout = ({ books, setBooks, isOpenedModal, setIsOpenedModal }) => {
-  const addBook = (book) => {
-    setBooks([book, ...books]);
-  };
+const PageLayout = ({ books, setIsOpenedModal }) => {
 
   return (
     <>
@@ -21,7 +17,7 @@ const PageLayout = ({ books, setBooks, isOpenedModal, setIsOpenedModal }) => {
       </div>
       <div className="flex justify-center items-center border-t-2">
         <SideWrapper />
-        <BookShelves />
+        <BookShelves books={books} />
       </div>
     </>
   );
