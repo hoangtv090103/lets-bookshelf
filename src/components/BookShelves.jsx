@@ -1,9 +1,4 @@
-import { useEffect } from "react";
-
 const BookShelves = ({ books }) => {
-  useEffect(() => {
-    console.log(books);
-  }, [books]);
 
   return books.length === 0 ? (
     <div>

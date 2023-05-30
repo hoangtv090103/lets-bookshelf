@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const FormModal = ({ setIsOpenedModal, books, setBooks }) => {
   const [cover, setCover] = useState();
@@ -8,6 +9,24 @@ const FormModal = ({ setIsOpenedModal, books, setBooks }) => {
   const [rate, setRate] = useState();
   const [status, setStatus] = useState();
 
+  const addBook = (e) => {
+    e.preventDefault();
+    setBooks((prevBooks) => [
+      ...prevBooks,
+      {
+        id: uuidv4(),
+        cover: cover,
+        title: title,
+        author: author,
+        genre: genre,
+        rate: rate,
+        status: status,
+      },
+    ]);
+    setIsOpenedModal((prev) => !prev);
+    console.log(books);
+  };
+
   const inputDiv = "flex items-center";
   return (
     <>
@@ -15,7 +34,7 @@ const FormModal = ({ setIsOpenedModal, books, setBooks }) => {
         <form className="flex flex-col bg-white w-[70%] z-20 justify-around rounded-xl min-h-fit overflow-auto">
           <button
             className="self-end mr-2 mt-2 border-2 p-1 hover:bg-slate-300 hover:cursor-pointer"
-            onClick={() => setIsOpenedModal(false)}
+            onClick={() => setIsOpenedModal((prev) => !prev)}
           >
             X
           </button>
@@ -96,19 +115,7 @@ const FormModal = ({ setIsOpenedModal, books, setBooks }) => {
           <button
             type="submit"
             className="bg-blue-500 rounded-xl p-2 m-2 text-white font-semibold"
-            onClick={(e) => {
-              setBooks([
-                ...books,
-                {
-                  cover: cover,
-                  title: title,
-                  author: author,
-                  genre: genre,
-                  rate: rate,
-                  status: status,
-                },
-              ]);
-            }}
+            onClick={addBook}
           >
             Add
           </button>

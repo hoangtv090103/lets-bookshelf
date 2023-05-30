@@ -10,7 +10,7 @@ const PageLayout = ({ books, setIsOpenedModal }) => {
         <h1 className="text-center">My books</h1>
         <button
           className="bg-blue-500 rounded-xl p-2 mr-2 text-white font-semibold"
-          onClick={() => setIsOpenedModal(true)}
+          onClick={() => setIsOpenedModal((prev) => !prev)}
         >
           Add
         </button>
