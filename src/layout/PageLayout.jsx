@@ -1,9 +1,9 @@
 import React from "react";
 import SideWrapper from "../components/SideWrapper";
 import BookShelves from "../components/BookShelves";
-import Popup from "reactjs-popup";
+import Modal from "../components/Modal";
 
-const PageLayout = ({ books, setBooks }) => {
+const PageLayout = ({ books, setBooks, isOpenedModal, setIsOpenedModal }) => {
   const addBook = (book) => {
     setBooks([book, ...books]);
   };
@@ -12,23 +12,12 @@ const PageLayout = ({ books, setBooks }) => {
     <>
       <div className="flex justify-between md:justify-around items-center">
         <h1 className="text-center">My books</h1>
-        <Popup
-          // position="center center"
-          trigger={
-            <button className="bg-blue-500 rounded-xl p-2 mr-2 text-white font-semibold">
-              Add
-            </button>
-          }
-          modal
-          nested
+        <button
+          className="bg-blue-500 rounded-xl p-2 mr-2 text-white font-semibold"
+          onClick={() => setIsOpenedModal(true)}
         >
-          {/* <div className="w-full h-full relative bg-slate-600">
-            {/* <form> */}
-              {/* <label htmlFor="title"></label>
-              <input id="title"></input>  */}
-            {/* </form> */}
-          {/* </div> */}
-        </Popup>
+          Add
+        </button>
       </div>
       <div className="flex justify-center items-center border-t-2">
         <SideWrapper />
