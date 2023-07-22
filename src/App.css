@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+#modal-react > div > label {
+  width: 150px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  #modal-react > div > label {
+    display: none;
+  }
+}
+
+#modal-react > div > input,
+#modal-react > div > select {
+  width: 100%;
+}
+
+#modal-react > div {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+#modal-react > #title {
+  width: 100%;
+}

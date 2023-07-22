@@ -2,23 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-#navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  top: 0.5rem;
+body > #root > div {
+  height: 100vh;
 }
 
+body {
+  overscroll-behavior: none;
+}
 
-
-@media screen and (max-width: 639px) {
-  #navbar {
-    display: none;
-  }
-
-  #logo {
-    display: none;
-  } 
+#modal-react > div {
+  margin-bottom: 10px;
+  font-size: larger;
 }
