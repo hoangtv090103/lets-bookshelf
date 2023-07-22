@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactModal from "react-modal";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
@@ -14,8 +14,7 @@ const BookModal = ({
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty },
-    getValues,
+    formState: { errors },
     watch,
     reset,
   } = useForm();
