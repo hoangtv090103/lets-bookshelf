@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-#modal-react > div > label {
+.input-field > label, .select-field > label {
   width: 150px;
   font-weight: bold;
 }

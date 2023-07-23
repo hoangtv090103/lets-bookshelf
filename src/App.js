@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import SideLayout from "./layout/SideLayout";
 import BookLayout from "./layout/BookLayout";
-import BookModal from "./layout/BookModal";
+import BookModal from "./modals/BookModal";
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [books, setBooks] = useState([]);

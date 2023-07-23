@@ -15,10 +15,12 @@ const BookLayout = (props) => {
   };
 
   return (
-    <div className="w-[80%] border-l-2">
-      <h1 className="flex justify-center items-center">Book Layout</h1>
-      <AddBookButton handleAddBook={handleAddBook} />
-      <div className="grid grid-cols-4 gap-4 border-t-2 p-1 overflow-y-scroll">
+    <div className="w-[80%] border-l-2 flex flex-col">
+      <div>
+        <h1 className="max-w-fit m-auto">Book Layout</h1>
+        <AddBookButton handleAddBook={handleAddBook} />
+      </div>
+      <div className="grid grid-cols-4 gap-4 border-t-2 p-1 overflow-auto">
         {books.map((book) => (
           <Book key={book.id} book={book} handleRemoveBook={handleRemoveBook} />
         ))}
