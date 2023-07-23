@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/lets-bookshelf/static/css/main.7467dd1c.css",
-    "main.js": "/lets-bookshelf/static/js/main.1f3b430f.js",
+    "main.css": "/lets-bookshelf/static/css/main.94991f55.css",
+    "main.js": "/lets-bookshelf/static/js/main.b3910c6b.js",
     "static/js/787.56c2505f.chunk.js": "/lets-bookshelf/static/js/787.56c2505f.chunk.js",
     "index.html": "/lets-bookshelf/index.html",
-    "main.7467dd1c.css.map": "/lets-bookshelf/static/css/main.7467dd1c.css.map",
-    "main.1f3b430f.js.map": "/lets-bookshelf/static/js/main.1f3b430f.js.map",
+    "main.94991f55.css.map": "/lets-bookshelf/static/css/main.94991f55.css.map",
+    "main.b3910c6b.js.map": "/lets-bookshelf/static/js/main.b3910c6b.js.map",
     "787.56c2505f.chunk.js.map": "/lets-bookshelf/static/js/787.56c2505f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7467dd1c.css",
-    "static/js/main.1f3b430f.js"
+    "static/css/main.94991f55.css",
+    "static/js/main.b3910c6b.js"
   ]
 }
