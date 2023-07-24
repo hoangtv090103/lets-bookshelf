@@ -7,12 +7,14 @@ import StateSelect from "../components/StateSelect";
 import Uploader from "../components/Uploader";
 
 const BookModal = ({
-  showModal,
-  setBooks,
-  setShowModal,
   books,
-  setGenres,
+  setBooks,
+  showModal,
+  setShowModal,
   genres,
+  setGenres,
+  states,
+  setStates,
 }) => {
   const {
     register,
@@ -94,14 +96,44 @@ const BookModal = ({
     };
 
     const newBooks = [...books, newBook];
+    const updateStates = states.map((state) => {
+      if (state.name === newBook.state || state.name === "All") {
+        return {
+          ...state,
+          quant: state.quant + 1,
+        };
+      }
+      return state;
+    });
+
+    var newGenres = null;
+    if (!genres.includes(genre)) {
+      newGenres = [
+        ...genres,
+        {
+          id: uuidv4(),
+          name: genre,
+          quant: 1,
+        },
+      ];
+    } else {
+      newGenres = genres.map((genre) => {
+        if (genre.name === newBook.genre) {
+          return {
+            ...genre,
+            quant: genre.quant + 1,
+          };
+        }
+        return genre;
+      });
+      setGenres(newGenres);
+    }
+
+    setStates(updateStates);
     setBooks(newBooks);
     localStorage.setItem("books", JSON.stringify(newBooks));
-
-    if (!genres.includes(genre)) {
-      const newGenres = [...genres, genre];
-      setGenres(newGenres);
-      localStorage.setItem("genres", JSON.stringify(newGenres));
-    }
+    localStorage.setItem("genres", JSON.stringify(newGenres));
+    localStorage.setItem("states", JSON.stringify(updateStates));
 
     closeModal();
     return true;
@@ -111,7 +143,6 @@ const BookModal = ({
     <ReactModal
       isOpen={showModal}
       appElement={document.getElementById("root") || undefined}
-      ariaHideApp={false}
       contentElement={() => {
         return (
           <form
@@ -168,7 +199,7 @@ const BookModal = ({
               placeholder="Untitled"
               register={register}
               style={{
-                border: errors?.title ? "1px solid red" : "noneƒ",
+                border: errors?.title ? "1px solid red" : "none",
               }}
               requiredField={true}
               label={"Title"}
