@@ -41,7 +41,32 @@ function App() {
     setIsLoading(true);
     setBooks(JSON.parse(localStorage.getItem("books") || "[]"));
     setGenres([...JSON.parse(localStorage.getItem("genres") || "[]")]);
-    setStates([...JSON.parse(localStorage.getItem("states") || "[]")]);
+    setStates(
+      JSON.parse(localStorage.getItem("states"))
+        ? [...JSON.parse(localStorage.getItem("states"))]
+        : [
+            {
+              id: uuidv4(),
+              name: "All",
+              quant: books.length,
+            },
+            {
+              id: uuidv4(),
+              name: "To Read",
+              quant: 0,
+            },
+            {
+              id: uuidv4(),
+              name: "Reading",
+              quant: 0,
+            },
+            {
+              id: uuidv4(),
+              name: "Read",
+              quant: 0,
+            },
+          ]
+    );
     setIsLoading(false);
   }, []);
 
